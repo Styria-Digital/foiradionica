@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shower Presentation Engine</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/styles.css">
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+        }
+    </style>
+    <!-- 
+    Kako brzo napraviti i objaviti web stranicu?
+
+    Krećemo od nule i pokazujemo kako uz pomoć Django razvojnog okruženja i Wagtail CMS-a možete uz minimalnu količinu koda napraviti web stranicu i postaviti na svoj web poslužitelj. Tajni sastojak je i Python programski jezik s kojim krećemo stvaranjem virtualnog okruženja i instalacijom potrebnih komponenti. Koristeći gotove html predloške pokazujemo kako se koriste template datoteke u Djangu i nakon toga pokazujemo kako s Gitom poslati kod u repozitorij. Pokrećemo virtualni poslužitelj, podešavamo ga uz pomoć skripti, objavljujemo web stranicu i pokazujemo kako se unosi sadržaj. Kod radionice će biti objavljen na GitHub-u.
+
+    -->
+</head>
+<body class="shower list">
+
+    <header class="caption">
+        <h1>Kako brzo napraviti i objaviti web stranicu?</h1>
+        <p>Styria digital development d.o.o.</p>
+    </header>
+
+    <section class="slide" id="cover">
+        <h2>Web na brzinu</h2>
+        <p>Styria digital development d.o.o.</p>
+        <figure>
+            <img class="cover" src="img/yellow-wagtail.jpg" alt="Žuta pastirica">
+        </figure>
+        <style>
+            #cover h2 {
+                margin: 30px 0 0;
+                color: white;
+                text-align: center;
+                font-size: 70px;
+            }
+
+            #cover p {
+                margin: 10px 0 0;
+                text-align: center;
+                color: white;
+                font-style: italic;
+                font-size: 20px;
+            }
+
+            #cover p a {
+                color: white;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Styria digital development d.o.o.</h2>
+        <ul>
+            <li>Styria - 150 godina</li>
+            <li>Digitalni razvoj od 2008.</li>
+            <li>24sata.hr, vecernji.hr, express.hr, siol.net...</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <img src="img/traffic.png" alt="" class="cover">
+    </section>
+
+    <section class="slide">
+        <h2>Preduvjeti</h2>
+        <ul class="columns two">
+            <li>Python3 - <a href="https://www.python.org/">Python.org</a></li>
+            <li>Virtualenv - <a href="https://virtualenv.pypa.io/en/stable/">virtualenv.pypa.io</a></li>
+            <li>IDE - <a href="https://atom.io/">A T O M</a>, <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+            <li>git - <a href="https://git-scm.com/">GitHub</a></li>
+            <li>Repozitorij - <a href="https://github.com/">GitHub</a>, <a href="https://gitlab.com/">GitLab</a></li>
+            <li>Baza - <a href="https://www.postgresql.org/">PostgreSQL</a></li>
+            <li>Django - <a href="https://www.djangoproject.com/">djangoproject.com</a></li>
+            <li>Wagtail CMS - <a href="https://wagtail.io/">wagtail.io</a></li>
+            <li><del>Html tema - <a href="https://w3layouts.com/trendy-blog-a-blogging-category-bootstrap-responsive-web-template/">Trendy Blog</a></del></li>
+            <li>VPS - Virtual private server (Linux)</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Python</h2>
+        <ul>
+            <li>Python 3</li>
+            <li>Linux - u distribuciji</li>
+            <li>Windows - <a href="https://www.python.org/downloads/windows/">Releases for Windows</a> - web based installer</li>
+            <li>MacOS - ako nema instalirati - <a href="https://brew.sh/">Homebrew</a></li>
+            <li>Pip - <a href="https://pypi.org/">PyPI</a> - Python Package Index</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Virtualenv</h2>
+        <ul>
+            <li>Alat za izolirane Python okoline</li>
+            <li>Instalacija (Windows) - <code>pip install virtualenv</code></li>
+            <li>Instalacija (ostali) - potražiti među paketima</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>IDE</h2>
+        <ul>
+            <li>Po želji</li>
+            <li>A T O M, Visual Studio Code, PyCharm</li>
+            <li>S podrškom za Python (i virtualenv)</li>
+            <li>Linter, provjereni kod u bojama</li>
+            <li><a href="https://app.programmingfonts.org">Programerski fontovi</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>git</h2>
+        <ul>
+            <li>Distribuirani sustav kontrole verzija</li>
+            <li>Osnove u komandnoj liniji</li>
+            <li>IDE podrška</li>
+            <li>Posebni klijenti</li>
+            <li><strong>Ne radi ništa bez gita!!!</strong></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Repozitorij</h2>
+        <ul>
+            <li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows">Git Workflow</a></li>
+            <li><strong>Code review</strong></li>
+            <li><strong>Continuous integration (building, testing...)</strong></li>
+            <li><strong>U repozitorij se ne spremaju podaci za pristup!!!</strong></li>
+            <li>Deploy keyevi za poslužitelje</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Baza</h2>
+        <ul>
+            <li>PostgreSQL</li>
+            <li>NoSQL - Redis...</li>
+            <li><a href="https://sqlite.org/index.html">SQLite</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Django</h2>
+        <figure>
+            <blockquote>
+                <p>Django makes it easier to build better Web apps more quickly and with less code.</p>
+            </blockquote>
+            <figcaption>Django web site</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide">
+        <h2>Wagtail CMS</h2>
+        <figure>
+            <blockquote>
+                <p>Wagtail, the powerful CMS for modern websites.</p>
+            </blockquote>
+            <figcaption>Wagtail web site</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide">
+        <h2>Html tema</h2>
+        <ul>
+            <li>CSS framework može biti dovoljan - <a href="https://bulma.io/">Bulma</a>, <a href="https://tailwindcss.com/">Tailwind CSS</a></li>
+            <li>Besplatne teme - <a href="https://w3layouts.com/">W3Layouts</a></li>
+            <li>Dobre, jeftine teme - <a href="https://themeforest.net/">ThemeForest</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>VPS</h2>
+        <ul>
+            <li>Shared hosting?</li>
+            <li>Oblak?</li>
+            <li>VPS?</li>
+            <li><a href="http://djangohosting.com/how-to-pick-a-host/">How to Pick a Host</a></li>
+            <li>VPS provideri - DigitalOcean, ScaleWay, Hetzner, Vultr</li>
+            <li><a href="https://www.cloudflare.com/">Cloudflare</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h1 class="shout shrink">Let's start</h1>
+    </section>
+
+    <section class="slide">
+        <h2>Create virtualenv</h2>
+        <pre>
+            <code>
+virtualenv -p /usr/bin/python3 ve
+source ve/bin/activate
+deactivate                
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Install Wagtail</h2>
+        <pre>
+            <code>
+pip install wagtail
+wagtail
+pip list -l
+pip list -lo              
+            </code>
+        </pre>
+    </section>
+
+
+    <section class="slide">
+        <h2>Pokreni projekt</h2>
+        <pre>
+            <code>
+wagtail start radionica .                
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Ništa bez Gita</h2>
+        <pre>
+            <code>
+git init
+git status
+git add -A  # ne preporučuje se                
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>.gitignore</h2>
+        <ul>
+            <li>Definiranje onoga što ne ide u repozitorij</li>
+            <li><a href="https://www.gitignore.io/">gitignore.io</a></li>
+            <li>Napravite vaš .gitignore</li>
+            <li>Korak po korak</li>
+            <li>Kasnije ga koristite na ostalim projektima</li>
+            <li><a href="https://stackoverflow.com/questions/7335420/global-git-ignore">Global Git Ignore</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h1 class="shout shrink">Prvi commit</h1>
+    </section>
+
+    <section class="slide">
+        <h2>Pokrenimo projekt</h2>
+        <pre>
+            <code>
+python manage.py  # ili
+./manage.py            
+./manage.py runserver    
+            </code>
+        </pre>        
+    </section>
+
+    <section class="slide">
+        <h2>Postavke</h2>
+        <ul>
+            <li>Wagtail način</li>
+            <li><a href="https://djangostars.com/blog/configuring-django-settings-best-practices/">Configuring Django Settings: Best Practices</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Migracija</h2>
+        <pre>
+            <code>
+./manage.py migrate
+./manage.py runserver                
+            </code>
+        </pre>
+        <p><a href="https://docs.djangoproject.com/en/2.2/topics/migrations/">Django migracije</a></p>
+    </section>
+
+    <section class="slide">
+        <h2>Prvi korisnik</h2>
+        <pre>
+            <code>
+./manage.py createsuperuser                
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h1 class="shout shrink">Wagtail šetnja</h1>
+    </section>
+
+    <section class="slide">
+        <h2>Blog aplikacija</h2>
+        <ul>
+            <li><a href="https://github.com/springload/awesome-wagtail">Awesome Wagtail</a></li>
+            <li><a href="https://puput.readthedocs.io/en/latest/index.html">Puput</a></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Puput instalacija</h2>
+        <pre>
+            <code>
+pip install --no-deps puput  # ili ipak ne?              
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Puput podešavanje</h2>
+        <p><a href="https://puput.readthedocs.io/en/latest/setup.html#installation-on-top-of-wagtail">Installation on top of Wagtail</a></p>
+        <pre>
+            <code>
+# base.py
+'wagtail.contrib.routable_page',
+'django_social_share',
+# requirements.txt
+            </code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h1 class="shout shrink">Let's blog</h1>
+    </section>
+
+    <section class="slide">
+        <h2>Isporuka koda</h2>
+        <ul>
+            <li>GitHub</li>
+            <li>…or push an existing repository from the command line</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>On server</h2>
+        <ul>
+            <li class="next">Kreiramo korisnika</li>
+            <li class="next">Kreiramo bazu i korisnika</li>
+            <li class="next">Izolacija</li>
+            <li class="next">SSH key - deployable</li>
+            <li class="next">Postavljanje koda</li>
+            <li class="next">Postavke</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Provjera</h2>
+        <ul>
+            <li class="next">check</li>
+            <li class="next">runserver</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>uwsgi</h2>
+        <ul>
+            <li><a href="https://uwsgi-docs.readthedocs.io/en/latest/index.html">uWSGI</a> poslužuje aplikaciju</li>
+            <li><a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface">Web Server Gateway Interface</a></li>
+            <li>Promjena .ini datoteke</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>nginx</h2>
+        <ul>
+            <li><a href="https://www.nginx.com/">High Performance Load Balancer, Web Server, Reverse Proxy</a></li>
+            <li><a href="https://news.netcraft.com/archives/2019/09/27/september-2019-web-server-survey.html">Web Server Survey</a></li>
+            <li>Postavke poslužitelja</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h1 class="shout shrink">HTTPS</h1>
+    </section>
+
+    <section class="slide">
+        <h2><a href="https://letsencrypt.org/">Let's Encrypt</a> </h2>
+    </section>
+
+    <section class="slide">
+        <h1 class="shout shrink">Q&A</h1>
+        <p><a href="https://github.com/Styria-Digital/foi-tk-2019">github.com/Styria-Digital/foi-tk-2019</a></p>
+    </section>
+    
+
+    <footer class="badge">
+        <a href="https://github.com/shower/shower">Fork me on GitHub</a>
+    </footer>
+
+    <div class="progress"></div>
+
+    <script src="shower/shower.min.js"></script>
+    <!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+
+</body>
+</html>
